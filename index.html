@@ -21,7 +21,7 @@
   }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
- 
+
   header {
     position: sticky; top: 0; z-index: 100;
     background: rgba(13,13,13,0.95); backdrop-filter: blur(8px);
@@ -30,7 +30,7 @@
   }
   .header-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase; }
   .countdown-chip { background: var(--orange); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 2px; text-transform: uppercase; }
- 
+
   .hero { padding: 5rem 2rem 3rem; max-width: 900px; margin: 0 auto; }
   .hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
   .hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; }
@@ -40,29 +40,29 @@
   .stat { display: flex; flex-direction: column; }
   .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 2rem; line-height: 1; color: var(--white); }
   .stat-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 4px; }
- 
+
   .divider-line { border: none; border-top: 1px solid var(--card-border); margin: 3rem auto; max-width: 900px; }
- 
+
   .top-bar { max-width: 900px; margin: 0 auto 1rem; padding: 0 2rem; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
   .filter-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
   .filter-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-right: 4px; }
   .phase-btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; border: 1px solid var(--card-border); background: transparent; color: var(--gray); cursor: pointer; transition: all 0.15s; }
   .phase-btn:hover { border-color: var(--gray); color: var(--white); }
- 
+
   .overall-progress { max-width: 900px; margin: 0 auto 1.5rem; padding: 0 2rem; display: flex; align-items: center; gap: 12px; }
   .overall-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
   .overall-bar-wrap { flex: 1; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
   .overall-bar-fill { height: 100%; background: var(--orange); border-radius: 3px; transition: width 0.4s; }
   .overall-pct { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--orange); min-width: 36px; text-align: right; }
- 
+
   .main { max-width: 900px; margin: 0 auto; padding: 0 2rem 6rem; }
- 
+
   .phase-section { margin-bottom: 3rem; }
   .phase-header-row { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; }
   .phase-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 2.2rem; text-transform: uppercase; line-height: 1; }
   .phase-weeks-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; }
   .phase-desc-text { font-size: 0.85rem; color: var(--gray); margin-bottom: 1.25rem; max-width: 560px; line-height: 1.6; }
- 
+
   .week-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; margin-bottom: 6px; overflow: hidden; }
   .week-toggle { width: 100%; display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; background: none; border: none; color: var(--white); cursor: pointer; text-align: left; transition: background 0.1s; flex-wrap: wrap; }
   .week-toggle:hover { background: rgba(255,255,255,0.03); }
@@ -81,7 +81,7 @@
   .week-card.open .week-chevron { transform: rotate(180deg); }
   .week-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--card-border); }
   .week-card.open .week-body { display: block; }
- 
+
   .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 8px; margin-top: 1rem; }
   .day-cell { background: #1c1c1c; border: 1px solid #252525; border-radius: 3px; padding: 0.75rem; position: relative; transition: opacity 0.2s; }
   .day-cell.rest-cell { background: #111; border-color: #1e1e1e; }
@@ -96,7 +96,7 @@
   .pill-home { background: rgba(240,165,0,0.12); color: #f0a500; }
   .pill-run { background: rgba(26,158,117,0.15); color: #1a9e75; }
   .pill-rest { background: rgba(107,107,107,0.1); color: #555; }
- 
+
   /* DONE BUTTON */
   .done-btn { margin-top: 10px; width: 100%; background: none; border: 1px solid #333; border-radius: 2px; color: #555; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 0; cursor: pointer; transition: all 0.15s; }
   .done-btn:hover { border-color: var(--teal); color: var(--teal); }
@@ -104,7 +104,7 @@
   .day-cell.completed .done-btn { background: var(--teal); border-color: var(--teal); color: #fff; }
   .day-cell.completed .day-cell-name { color: var(--teal); }
   .today-cell { border-color: var(--orange) !important; }
- 
+
   .week-progress { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--card-border); font-size: 0.75rem; color: var(--gray); }
   .progress-bar-wrap { flex: 1; height: 4px; background: #222; border-radius: 2px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--teal); border-radius: 2px; transition: width 0.3s; }
@@ -112,7 +112,7 @@
   .week-card.all-done .week-toggle { background: rgba(26,158,117,0.05); }
   .all-done-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--teal); color: white; padding: 2px 8px; border-radius: 2px; margin-left: 6px; }
   .current-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: white; padding: 2px 8px; border-radius: 2px; margin-left: 6px; }
- 
+
   .stations-section { margin: 3rem 0; padding: 2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; }
   .stations-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 1.25rem; }
   .stations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
@@ -120,7 +120,7 @@
   .station-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--orange); line-height: 1; min-width: 20px; }
   .station-name { color: var(--white); font-weight: 500; }
   .station-dist { color: var(--gray); font-size: 0.75rem; }
- 
+
   .race-card { background: linear-gradient(135deg, #1a1010 0%, #110d0d 100%); border: 1px solid var(--orange-dim); border-radius: 4px; padding: 2rem; margin: 3rem 0; position: relative; overflow: hidden; }
   .race-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
   .race-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
@@ -128,14 +128,14 @@
   .race-details { font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem; }
   .race-cta { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 24px; background: var(--orange); color: var(--white); border-radius: 2px; text-decoration: none; transition: background 0.15s; }
   .race-cta:hover { background: var(--orange-dim); }
- 
+
   .tips-section { margin: 2rem 0; }
   .tips-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 1rem; }
   .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
   .tip-item { padding: 1rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 3px; border-left: 3px solid var(--orange); }
   .tip-head { font-weight: 500; font-size: 0.85rem; margin-bottom: 4px; }
   .tip-body { font-size: 0.78rem; color: #888; line-height: 1.5; }
- 
+
   @media (max-width: 600px) {
     .hero-title { font-size: 3rem; }
     .hero-stats { gap: 1.5rem; }
@@ -146,12 +146,12 @@
 </style>
 </head>
 <body>
- 
+
 <header>
   <div class="header-logo">HYROX Training</div>
   <div class="countdown-chip" id="countdown-chip">Loading...</div>
 </header>
- 
+
 <div class="hero">
   <div class="hero-eyebrow">Your 14-Week Plan · Starting June 1, 2026</div>
   <h1 class="hero-title">Train.<br><span>Race.</span><br>Finish.</h1>
@@ -164,9 +164,9 @@
     <div class="stat"><span class="stat-num" id="days-out">—</span><span class="stat-label">Days to race</span></div>
   </div>
 </div>
- 
+
 <hr class="divider-line">
- 
+
 <div class="top-bar">
   <div class="filter-group">
     <span class="filter-label">Phase:</span>
@@ -185,63 +185,63 @@
     <button class="phase-btn" style="color:#1a9e75;border-color:#0a2a1e" onclick="scrollToType('run')">Long run</button>
   </div>
 </div>
- 
+
 <div class="overall-progress">
   <span class="overall-label">Overall progress</span>
   <div class="overall-bar-wrap"><div class="overall-bar-fill" id="overall-fill" style="width:0%"></div></div>
   <span class="overall-pct" id="overall-pct">0%</span>
 </div>
- 
+
 <main class="main" id="main-content"></main>
- 
+
 <script>
 const RACE_DATE = new Date('2026-09-03T08:00:00');
 const TRAINING_START = new Date('2026-06-01'); // Monday June 1
- 
+
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const DAYS_FULL = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
- 
+
 function addDays(date, n) {
   const d = new Date(date);
   d.setDate(d.getDate() + n);
   return d;
 }
- 
+
 function fmtDate(d) {
   return `${DAYS_FULL[d.getDay()]} ${MONTHS[d.getMonth()]} ${d.getDate()}`;
 }
- 
+
 function isToday(d) {
   const now = new Date();
   return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
 }
- 
+
 function daysUntilRace() {
   const now = new Date();
   return Math.max(0, Math.ceil((RACE_DATE - now) / (1000*60*60*24)));
 }
- 
+
 document.getElementById('days-out').textContent = daysUntilRace();
 const d = daysUntilRace();
 document.getElementById('countdown-chip').textContent = d > 0 ? d + ' days to race' : 'Race week!';
- 
+
 // Load completion state
 let completed = {};
 try { completed = JSON.parse(localStorage.getItem('hyrox-done') || '{}'); } catch(e) {}
 function saveCompleted() { try { localStorage.setItem('hyrox-done', JSON.stringify(completed)); } catch(e) {} }
- 
+
 // Week schedule: each week starts on Monday (day 0 = Mon Jun 1)
 // Days per week: Mon=rest, Tue=OTF Power, Wed=Gym/Stations, Thu=OTF Endurance, Fri=Strength Home, Sat=Active Recovery, Sun=Long Run
 // Week offset: week 1 starts Jun 1 (Mon). Days: +0=Mon rest, +1=Tue, +2=Wed, +3=Thu, +4=Fri, +5=Sat, +6=Sun
- 
+
 function weekStartDate(weekNum) {
   // Week 1 starts Jun 1 (Mon). Each week is 7 days.
   return addDays(TRAINING_START, (weekNum - 1) * 7);
 }
- 
+
 // Day offsets within week: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 const DAY_OFFSETS = { mon: 0, tue: 1, wed: 2, thu: 3, fri: 4, sat: 5, sun: 6 };
- 
+
 const phases = [
   {
     id: 'base', label: 'Base', color: '#1a9e75',
@@ -440,7 +440,7 @@ const phases = [
     ]
   }
 ];
- 
+
 const stations = [
   { num: 1, name: 'SkiErg', dist: '1,000m' },
   { num: 2, name: 'Sled push', dist: '50m' },
@@ -451,7 +451,7 @@ const stations = [
   { num: 7, name: 'Sandbag lunges', dist: '100m' },
   { num: 8, name: 'Wall balls', dist: '75–100 reps' }
 ];
- 
+
 const tips = [
   { head: 'Register now', body: 'HYROX D.C. sells out. Lock in your spot at hyrox.com before starting week 1.' },
   { head: 'OTF is your roxzone engine', body: 'Treat Power Day push/all-out tread blocks as station transitions. Practice holding pace when fatigued.' },
@@ -460,7 +460,7 @@ const tips = [
   { head: 'Protein target', body: 'Aim for 0.7–1g per lb of bodyweight daily to support fat loss and muscle recovery during heavy training.' },
   { head: 'Sleep is training', body: '7–8 hrs directly impacts fat burning, stress hormones, and recovery. Non-negotiable especially in peak weeks.' }
 ];
- 
+
 // Determine current week
 function getCurrentWeek() {
   const now = new Date(); now.setHours(0,0,0,0);
@@ -469,11 +469,11 @@ function getCurrentWeek() {
   const weekNum = Math.floor(diff / (7 * 24 * 60 * 60 * 1000)) + 1;
   return weekNum >= 1 && weekNum <= 14 ? weekNum : null;
 }
- 
+
 const currentWeek = getCurrentWeek();
 const main = document.getElementById('main-content');
 let html = '';
- 
+
 const TYPE_PILL = {
   otf: '<span class="day-type-pill pill-otf">OTF</span>',
   gym: '<span class="day-type-pill pill-gym">Gym</span>',
@@ -481,20 +481,20 @@ const TYPE_PILL = {
   run: '<span class="day-type-pill pill-run">Long run</span>',
   rest: '<span class="day-type-pill pill-rest">Rest</span>'
 };
- 
+
 phases.forEach(phase => {
   html += `<section class="phase-section" data-phase="${phase.id}">`;
   html += `<div class="phase-header-row">
     <span class="phase-label" style="color:${phase.color}">${phase.label}</span>
     <span class="phase-weeks-label">${phase.weeksLabel}</span>
   </div><p class="phase-desc-text">${phase.desc}</p>`;
- 
+
   phase.weeks.forEach(week => {
     const isCurrent = week.num === currentWeek;
     const wStart = weekStartDate(week.num);
     const wEnd = addDays(wStart, 6);
     const dateRange = `${MONTHS[wStart.getMonth()]} ${wStart.getDate()} – ${MONTHS[wEnd.getMonth()]} ${wEnd.getDate()}`;
- 
+
     // Compute completion for header
     const workoutDays = week.days.filter(d => !d.rest);
     const doneDays = workoutDays.filter((d, i) => {
@@ -503,7 +503,7 @@ phases.forEach(phase => {
     }).length;
     const pct = workoutDays.length > 0 ? Math.round((doneDays / workoutDays.length) * 100) : 0;
     const allDone = pct === 100 && workoutDays.length > 0;
- 
+
     html += `<div class="week-card${isCurrent ? ' open' : ''}${allDone ? ' all-done' : ''}" id="week-${week.num}">
       <button class="week-toggle" onclick="toggleWeek(this)">
         <span class="week-num-badge">Week ${week.num}</span>
@@ -513,18 +513,19 @@ phases.forEach(phase => {
         <span class="week-chevron">▾</span>
       </button>
       <div class="week-body"><div class="days-grid">`;
- 
+
     week.days.forEach((day, dayIdx) => {
       const key = `w${week.num}-d${dayIdx}`;
       const isDone = completed[key];
       const dayDate = addDays(wStart, DAY_OFFSETS[day.dayKey]);
       const todayFlag = isToday(dayDate);
       const dateStr = fmtDate(dayDate);
+      const actualDayLabel = DAYS_FULL[dayDate.getDay()].toUpperCase();
       const skipBtn = day.rest;
- 
+
       html += `<div class="day-cell${day.rest ? ' rest-cell' : ''}${isDone ? ' completed' : ''}${todayFlag ? ' today-cell' : ''}" id="cell-${key}">
         <div class="day-cell-date${todayFlag ? ' today-date' : ''}">${dateStr}${todayFlag ? ' · Today' : ''}</div>
-        <div class="day-cell-label">${day.label}</div>
+        <div class="day-cell-label">${actualDayLabel}</div>
         ${TYPE_PILL[day.type] || ''}
         <div class="day-cell-name">${day.name}</div>
         <div class="day-cell-detail">${day.detail}</div>
@@ -533,7 +534,7 @@ phases.forEach(phase => {
         </button>` : ''}
       </div>`;
     });
- 
+
     html += `</div>
       <div class="week-progress">
         <span id="prog-label-${week.num}">${doneDays}/${workoutDays.length} workouts</span>
@@ -542,10 +543,10 @@ phases.forEach(phase => {
       </div>
     </div></div>`;
   });
- 
+
   html += `</section>`;
 });
- 
+
 // Stations
 html += `<div class="stations-section">
   <div class="stations-title">The 8 HYROX stations · 1km run between each</div>
@@ -554,7 +555,7 @@ stations.forEach(s => {
   html += `<div class="station-item"><span class="station-num">${s.num}</span><div><div class="station-name">${s.name}</div><div class="station-dist">${s.dist}</div></div></div>`;
 });
 html += `</div></div>`;
- 
+
 // Race card
 html += `<div class="race-card">
   <div class="race-eyebrow">Target event</div>
@@ -562,16 +563,16 @@ html += `<div class="race-card">
   <div class="race-details">September 3–7, 2026 &nbsp;·&nbsp; Walter E. Washington Convention Center</div>
   <a href="https://hyrox.com" target="_blank" class="race-cta">Register at hyrox.com ↗</a>
 </div>`;
- 
+
 // Tips
 html += `<div class="tips-section"><div class="tips-title">Key reminders</div><div class="tips-grid">`;
 tips.forEach(t => {
   html += `<div class="tip-item"><div class="tip-head">${t.head}</div><div class="tip-body">${t.body}</div></div>`;
 });
 html += `</div></div>`;
- 
+
 main.innerHTML = html;
- 
+
 // Scroll to current week
 if (currentWeek) {
   setTimeout(() => {
@@ -579,9 +580,9 @@ if (currentWeek) {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 300);
 }
- 
+
 function toggleWeek(btn) { btn.closest('.week-card').classList.toggle('open'); }
- 
+
 function filterPhase(phase) {
   document.querySelectorAll('.phase-section').forEach(s => {
     s.style.display = (phase === 'all' || s.dataset.phase === phase) ? 'block' : 'none';
@@ -589,7 +590,7 @@ function filterPhase(phase) {
   const first = document.querySelector(`.phase-section[data-phase="${phase}"]`);
   if (first && phase !== 'all') first.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
- 
+
 function scrollToType(type) {
   // Open all phases, then scroll to first cell of that type
   document.querySelectorAll('.phase-section').forEach(s => s.style.display = 'block');
@@ -599,7 +600,7 @@ function scrollToType(type) {
     if (card) { card.classList.add('open'); card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
 }
- 
+
 function toggleDone(key, weekNum) {
   completed[key] = !completed[key];
   saveCompleted();
@@ -611,7 +612,7 @@ function toggleDone(key, weekNum) {
   updateWeekProgress(weekNum);
   updateOverallProgress();
 }
- 
+
 function updateWeekProgress(weekNum) {
   const phase = phases.find(p => p.weeks.find(w => w.num === weekNum));
   if (!phase) return;
@@ -639,7 +640,7 @@ function updateWeekProgress(weekNum) {
     existing.remove();
   }
 }
- 
+
 function updateOverallProgress() {
   let total = 0, done = 0;
   phases.forEach(phase => {
@@ -653,7 +654,7 @@ function updateOverallProgress() {
   document.getElementById('overall-fill').style.width = pct + '%';
   document.getElementById('overall-pct').textContent = pct + '%';
 }
- 
+
 updateOverallProgress();
 </script>
 </body>
