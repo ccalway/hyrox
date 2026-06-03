@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYROX DC — 14-Week Training Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0d0d0d;
+    --white: #f5f2ec;
+    --orange: #e8501a;
+    --orange-dim: #c44015;
+    --amber: #f0a500;
+    --teal: #1a9e75;
+    --blue: #2478c8;
+    --gray: #6b6b6b;
+    --card-bg: #161616;
+    --card-border: #2a2a2a;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,13,0.95); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .header-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase; }
+  .countdown-chip { background: var(--orange); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 2px; text-transform: uppercase; }
+
+  .hero { padding: 5rem 2rem 3rem; max-width: 900px; margin: 0 auto; }
+  .hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+  .hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; }
+  .hero-title span { color: var(--orange); }
+  .hero-sub { font-size: 1rem; color: var(--gray); max-width: 460px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.7; }
+  .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 2rem; line-height: 1; color: var(--white); }
+  .stat-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 4px; }
+
+  .divider-line { border: none; border-top: 1px solid var(--card-border); margin: 3rem auto; max-width: 900px; }
+
+  .top-bar { max-width: 900px; margin: 0 auto 1rem; padding: 0 2rem; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .filter-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .filter-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-right: 4px; }
+  .phase-btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; border: 1px solid var(--card-border); background: transparent; color: var(--gray); cursor: pointer; transition: all 0.15s; }
+  .phase-btn:hover { border-color: var(--gray); color: var(--white); }
+
+  .overall-progress { max-width: 900px; margin: 0 auto 1.5rem; padding: 0 2rem; display: flex; align-items: center; gap: 12px; }
+  .overall-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+  .overall-bar-wrap { flex: 1; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
+  .overall-bar-fill { height: 100%; background: var(--orange); border-radius: 3px; transition: width 0.4s; }
+  .overall-pct { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--orange); min-width: 36px; text-align: right; }
+
+  .main { max-width: 900px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+  .phase-section { margin-bottom: 3rem; }
+  .phase-header-row { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; }
+  .phase-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 2.2rem; text-transform: uppercase; line-height: 1; }
+  .phase-weeks-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; }
+  .phase-desc-text { font-size: 0.85rem; color: var(--gray); margin-bottom: 1.25rem; max-width: 560px; line-height: 1.6; }
+
+  .week-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; margin-bottom: 6px; overflow: hidden; }
+  .week-toggle { width: 100%; display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; background: none; border: none; color: var(--white); cursor: pointer; text-align: left; transition: background 0.1s; flex-wrap: wrap; }
+  .week-toggle:hover { background: rgba(255,255,255,0.03); }
+  .week-num-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); min-width: 58px; }
+  .week-dates-badge { font-size: 0.7rem; color: #444; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.05em; }
+  .week-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em; flex: 1; }
+  .week-intensity { font-size: 0.7rem; font-weight: 500; padding: 3px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .intensity-easy { background: rgba(26,158,117,0.15); color: var(--teal); }
+  .intensity-moderate { background: rgba(240,165,0,0.15); color: var(--amber); }
+  .intensity-hard { background: rgba(232,80,26,0.15); color: var(--orange); }
+  .intensity-recovery { background: rgba(107,107,107,0.15); color: var(--gray); }
+  .intensity-peak { background: rgba(232,80,26,0.2); color: #ff7a50; }
+  .intensity-taper { background: rgba(36,120,200,0.15); color: var(--blue); }
+  .intensity-raceweek { background: rgba(36,120,200,0.25); color: #5ba8e8; }
+  .week-chevron { color: var(--gray); font-size: 1rem; transition: transform 0.25s; margin-left: auto; }
+  .week-card.open .week-chevron { transform: rotate(180deg); }
+  .week-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--card-border); }
+  .week-card.open .week-body { display: block; }
+
+  .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 8px; margin-top: 1rem; }
+  .day-cell { background: #1c1c1c; border: 1px solid #252525; border-radius: 3px; padding: 0.75rem; position: relative; transition: opacity 0.2s; }
+  .day-cell.rest-cell { background: #111; border-color: #1e1e1e; }
+  .day-cell-date { font-size: 0.7rem; color: #555; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.05em; margin-bottom: 3px; }
+  .day-cell-date.today-date { color: var(--orange); font-weight: 600; }
+  .day-cell-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+  .day-cell-name { font-weight: 500; font-size: 0.85rem; color: var(--white); margin-bottom: 5px; line-height: 1.3; }
+  .day-cell-detail { font-size: 0.78rem; color: #888; line-height: 1.5; }
+  .day-type-pill { display: inline-block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; margin-bottom: 6px; }
+  .pill-otf { background: rgba(232,80,26,0.15); color: #e8501a; }
+  .pill-gym { background: rgba(36,120,200,0.15); color: #2478c8; }
+  .pill-home { background: rgba(240,165,0,0.12); color: #f0a500; }
+  .pill-run { background: rgba(26,158,117,0.15); color: #1a9e75; }
+  .pill-rest { background: rgba(107,107,107,0.1); color: #555; }
+
+  /* DONE BUTTON */
+  .done-btn { margin-top: 10px; width: 100%; background: none; border: 1px solid #333; border-radius: 2px; color: #555; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 0; cursor: pointer; transition: all 0.15s; }
+  .done-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .day-cell.completed { background: #0d1f18; border-color: #1a4030; }
+  .day-cell.completed .done-btn { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .day-cell.completed .day-cell-name { color: var(--teal); }
+  .today-cell { border-color: var(--orange) !important; }
+
+  .week-progress { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--card-border); font-size: 0.75rem; color: var(--gray); }
+  .progress-bar-wrap { flex: 1; height: 4px; background: #222; border-radius: 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--teal); border-radius: 2px; transition: width 0.3s; }
+  .progress-label { min-width: 36px; text-align: right; }
+  .week-card.all-done .week-toggle { background: rgba(26,158,117,0.05); }
+  .all-done-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--teal); color: white; padding: 2px 8px; border-radius: 2px; margin-left: 6px; }
+  .current-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: white; padding: 2px 8px; border-radius: 2px; margin-left: 6px; }
+
+  .stations-section { margin: 3rem 0; padding: 2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; }
+  .stations-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 1.25rem; }
+  .stations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+  .station-item { display: flex; align-items: flex-start; gap: 10px; padding: 0.6rem 0.75rem; background: #1c1c1c; border-radius: 3px; font-size: 0.82rem; }
+  .station-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--orange); line-height: 1; min-width: 20px; }
+  .station-name { color: var(--white); font-weight: 500; }
+  .station-dist { color: var(--gray); font-size: 0.75rem; }
+
+  .race-card { background: linear-gradient(135deg, #1a1010 0%, #110d0d 100%); border: 1px solid var(--orange-dim); border-radius: 4px; padding: 2rem; margin: 3rem 0; position: relative; overflow: hidden; }
+  .race-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
+  .race-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .race-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 2.5rem; text-transform: uppercase; line-height: 1; color: var(--white); margin-bottom: 0.5rem; }
+  .race-details { font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem; }
+  .race-cta { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 24px; background: var(--orange); color: var(--white); border-radius: 2px; text-decoration: none; transition: background 0.15s; }
+  .race-cta:hover { background: var(--orange-dim); }
+
+  .tips-section { margin: 2rem 0; }
+  .tips-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 1rem; }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+  .tip-item { padding: 1rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 3px; border-left: 3px solid var(--orange); }
+  .tip-head { font-weight: 500; font-size: 0.85rem; margin-bottom: 4px; }
+  .tip-body { font-size: 0.78rem; color: #888; line-height: 1.5; }
+
+  @media (max-width: 600px) {
+    .hero-title { font-size: 3rem; }
+    .hero-stats { gap: 1.5rem; }
+    .days-grid { grid-template-columns: 1fr 1fr; }
+    header { padding: 0 1rem; }
+    .hero, .main, .top-bar, .overall-progress { padding-left: 1rem; padding-right: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">HYROX Training</div>
+  <div class="countdown-chip" id="countdown-chip">Loading...</div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">Your 14-Week Plan · Starting June 1, 2026</div>
+  <h1 class="hero-title">Train.<br><span>Race.</span><br>Finish.</h1>
+  <p class="hero-sub">Washington D.C. · September 3–7, 2026 · Walter E. Washington Convention Center</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">14</span><span class="stat-label">Weeks</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Days/week</span></div>
+    <div class="stat"><span class="stat-num">8km</span><span class="stat-label">Race run</span></div>
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Stations</span></div>
+    <div class="stat"><span class="stat-num" id="days-out">—</span><span class="stat-label">Days to race</span></div>
+  </div>
+</div>
+
+<hr class="divider-line">
+
+<div class="top-bar">
+  <div class="filter-group">
+    <span class="filter-label">Phase:</span>
+    <button class="phase-btn" onclick="filterPhase('all')">All</button>
+    <button class="phase-btn" onclick="filterPhase('base')">Base</button>
+    <button class="phase-btn" onclick="filterPhase('build')">Build</button>
+    <button class="phase-btn" onclick="filterPhase('peak')">Peak</button>
+    <button class="phase-btn" onclick="filterPhase('taper')">Taper</button>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Type:</span>
+    <button class="phase-btn" onclick="filterPhase('all')">All</button>
+    <button class="phase-btn" style="color:#e8501a;border-color:#3a1a10" onclick="scrollToType('otf')">OTF</button>
+    <button class="phase-btn" style="color:#2478c8;border-color:#0e1e30" onclick="scrollToType('gym')">Gym</button>
+    <button class="phase-btn" style="color:#f0a500;border-color:#2e2000" onclick="scrollToType('home')">Home</button>
+    <button class="phase-btn" style="color:#1a9e75;border-color:#0a2a1e" onclick="scrollToType('run')">Long run</button>
+  </div>
+</div>
+
+<div class="overall-progress">
+  <span class="overall-label">Overall progress</span>
+  <div class="overall-bar-wrap"><div class="overall-bar-fill" id="overall-fill" style="width:0%"></div></div>
+  <span class="overall-pct" id="overall-pct">0%</span>
+</div>
+
+<main class="main" id="main-content"></main>
+
+<script>
+const RACE_DATE = new Date('2026-09-03T08:00:00');
+const TRAINING_START = new Date('2026-06-01'); // Monday June 1
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAYS_FULL = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function addDays(date, n) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + n);
+  return d;
+}
+
+function fmtDate(d) {
+  return `${DAYS_FULL[d.getDay()]} ${MONTHS[d.getMonth()]} ${d.getDate()}`;
+}
+
+function isToday(d) {
+  const now = new Date();
+  return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+}
+
+function daysUntilRace() {
+  const now = new Date();
+  return Math.max(0, Math.ceil((RACE_DATE - now) / (1000*60*60*24)));
+}
+
+document.getElementById('days-out').textContent = daysUntilRace();
+const d = daysUntilRace();
+document.getElementById('countdown-chip').textContent = d > 0 ? d + ' days to race' : 'Race week!';
+
+// Load completion state
+let completed = {};
+try { completed = JSON.parse(localStorage.getItem('hyrox-done') || '{}'); } catch(e) {}
+function saveCompleted() { try { localStorage.setItem('hyrox-done', JSON.stringify(completed)); } catch(e) {} }
+
+// Week schedule: each week starts on Monday (day 0 = Mon Jun 1)
+// Days per week: Mon=rest, Tue=OTF Power, Wed=Gym/Stations, Thu=OTF Endurance, Fri=Strength Home, Sat=Active Recovery, Sun=Long Run
+// Week offset: week 1 starts Jun 1 (Mon). Days: +0=Mon rest, +1=Tue, +2=Wed, +3=Thu, +4=Fri, +5=Sat, +6=Sun
+
+function weekStartDate(weekNum) {
+  // Week 1 starts Jun 1 (Mon). Each week is 7 days.
+  return addDays(TRAINING_START, (weekNum - 1) * 7);
+}
+
+// Day offsets within week: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
+const DAY_OFFSETS = { mon: 0, tue: 1, wed: 2, thu: 3, fri: 4, sat: 5, sun: 6 };
+
+const phases = [
+  {
+    id: 'base', label: 'Base', color: '#1a9e75',
+    weeksLabel: 'Weeks 1–4 · Jun 1 – Jun 28',
+    desc: 'Build aerobic base and movement patterns. Get comfortable with your 6-day rhythm and introduce HYROX stations.',
+    weeks: [
+      {
+        num: 1, title: 'Orientation', intensity: 'easy', intLabel: 'Easy',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest. Set up your training log. Plan the week ahead.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Endurance class. Stay green/orange zones. Log your splat points as a baseline.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Station intro', detail: 'Gym: 3×5 min ski erg + 3×5 min row. Easy pace, focus on form. Practice burpee broad jumps 3×10.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Power Day. Get a feel for push/all-out intensity. Note tread paces.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×10 back squat (bar), 3×12 RDL, 3×15 wall ball, 3×12 goblet squat (sandbag). Rest 90s between sets.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: '20–30 min easy walk or yoga. Hip flexors, hamstrings, shoulders.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '4 miles easy. Conversational pace. This is your aerobic base builder.', type: 'run' }
+        ]
+      },
+      {
+        num: 2, title: 'Aerobic base', intensity: 'easy', intLabel: 'Easy',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Endurance Day if available. Aim 14–18 splat points. Stay controlled.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Run + row', detail: 'Gym: 2km run, 500m row, 2km run, 500m row. Rest 2 min between efforts. Easy-moderate pace.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Power Day. Push the tread intervals. Note your base/push/all-out paces — you\'ll use these race day.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×12 back squat, 3×10 RDL with 35lb DBs, 3×15 wall ball, 3×10 single-leg RDL. Add farmer carry 3×30m with DBs.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Mobility', detail: '30 min yoga or foam roll. Focus: hip flexors, IT band, thoracic spine.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '4.5 miles easy. Same conversational pace. Don\'t push it.', type: 'run' }
+        ]
+      },
+      {
+        num: 3, title: 'Volume up', intensity: 'moderate', intLabel: 'Moderate',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Push hard on intervals. Target 18–20 splat points.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Station circuit', detail: 'Gym: 1km run → ski erg 500m → 1km run → row 500m → 1km run → wall balls 20 reps. ×2 rounds. Rest 3 min between.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Sustain orange zone for long blocks. Practice holding pace.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×8 back squat (add weight), 3×10 RDL, 3×20 wall ball, 3×12 sandbag lunge. Superset: 3×10 push-up + 3×10 bent row with 35lb DBs.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Easy 20 min walk or light yoga. Legs should feel fresh for Sunday.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5 miles moderate. Pick up slightly in the last mile if feeling good.', type: 'run' }
+        ]
+      },
+      {
+        num: 4, title: 'Deload', intensity: 'recovery', intLabel: 'Recovery',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Easy class. Don\'t chase splat points. Green/orange only.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Easy stations', detail: 'Gym: 30 min — 5 min ski erg, 5 min row, 5 min wall balls. Easy pace only. Form check.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Light class. Treat as active recovery.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Mobility (home)', detail: '30 min full-body mobility. No strength work this week. Let the body absorb weeks 1–3.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '4 miles easy. This is a down week — keep it comfortable.', type: 'run' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'build', label: 'Build', color: '#f0a500',
+    weeksLabel: 'Weeks 5–10 · Jun 29 – Aug 9',
+    desc: 'Increase intensity and volume. Introduce roxzones — back-to-back station + run sequences. This is where real race fitness is built.',
+    weeks: [
+      {
+        num: 5, title: 'Introduce roxzones', intensity: 'moderate', intLabel: 'Moderate',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Push hard — 18–20 splat points target.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Roxzone intro', detail: 'Gym: 1km run → ski erg 500m → 1km run → row 500m → 1km run → wall balls 25 reps. Rest 3 min, repeat ×1.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Build time in orange zone. Aim for sustained effort over 45 min.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×8 back squat, 4×12 RDL (35lb DBs), 4×15 wall ball, 3×20 sandbag lunge, 3×30m farmer carry.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Yoga or 30 min walk. HR below 120. Prep legs for Sunday.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5 miles moderate. Start building a negative split habit — second half slightly faster.', type: 'run' }
+        ]
+      },
+      {
+        num: 6, title: 'Volume + pace', intensity: 'moderate', intLabel: 'Moderate+',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Note tread paces — are you holding them from week 1? Aim to improve.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Intervals + stations', detail: 'Gym: 4×1km at 5k effort (90s rest), then: 80m burpee broad jumps + 1km run + farmers carry 2×40m. ×2.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Marathon format if available — longest sustained effort.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '5×5 back squat (heavy), 3×10 RDL, 3×25 wall ball, 4×12 sandbag lunge, 3×30m farmer carry. Focus: heavy lower body.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Mobility', detail: '30 min: hip flexor stretch, pigeon pose, shoulder mobility, foam roll quads + calves.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5.5 miles. Add a 10 min tempo segment in the middle (comfortably hard effort).', type: 'run' }
+        ]
+      },
+      {
+        num: 7, title: 'Race pace work', intensity: 'hard', intLabel: 'Hard',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Match push/all-out blocks to HYROX roxzone effort. These should feel like station transitions.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Half roxzone', detail: 'Gym: 4 rounds of 1km run + 1 station (rotate: ski erg / row / wall balls / burpee jumps). Race effort. Rest 2 min.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Push orange zone for long blocks. Strong day.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×6 back squat (heavy), 3×12 RDL, 20 min AMRAP: 5 wall balls + 50m farmer carry + 200m run.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Easy walk or yoga. Genuinely easy — you have a hard run tomorrow.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '6 miles moderate. This is your biggest run yet. Settle into a rhythm.', type: 'run' }
+        ]
+      },
+      {
+        num: 8, title: 'Deload', intensity: 'recovery', intLabel: 'Recovery',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Easy class. No pressure on splat points. Just move.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Easy stations', detail: 'Gym: 20 min — ski erg and row only, easy pace. Form check on all 8 stations if equipment available.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Light class. Active recovery effort.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Mobility (home)', detail: '30 min full-body mobility + light wall balls 3×10. No heavy lifting.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '4.5 miles easy. Down week — stay comfortable.', type: 'run' }
+        ]
+      },
+      {
+        num: 9, title: 'Longer roxzones', intensity: 'hard', intLabel: 'Hard',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. This is a big week — come in ready.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: '6-station sim', detail: 'Gym: 1km run → ski erg → 1km run → row → 1km run → wall balls → 1km run → burpee jumps → 1km run → farmers carry → 1km run. Rest 5 min, repeat ×1.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Sustain orange zone. Think about running economy.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×6 back squat, 4×20 wall ball, 4×15 sandbag lunge, 3×400m run at tempo. Keep rest tight.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Easy 30 min walk. Legs may be tired — that\'s fine. Just keep moving.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '6.5 miles moderate. Add 2×1 mile at tempo in the middle.', type: 'run' }
+        ]
+      },
+      {
+        num: 10, title: 'Full simulation', intensity: 'hard', intLabel: 'Hard',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest. Big week ahead.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Treat this as race rehearsal intensity. Note every tread pace.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Full HYROX mock', detail: 'Gym: All 8 stations, 1km run between each. Sub sled with heavy DB farmer carry. Race pace effort. Time yourself.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Your legs will be heavy — push through. This builds mental toughness.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: 'Light circuit: 3×10 back squat (moderate weight), 3×10 RDL, 3×10 wall ball. No grinding — save legs.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Foam roll + stretch', detail: 'Full recovery session. 20 min foam roll + 20 min stretch. Legs, hips, back.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '7 miles. Your longest run yet. Easy-moderate. You\'ve got this.', type: 'run' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'peak', label: 'Peak', color: '#e8501a',
+    weeksLabel: 'Weeks 11–12 · Aug 10 – Aug 23',
+    desc: 'Race-specific efforts at full intensity. Dial in pacing strategy. Trust the training you\'ve built.',
+    weeks: [
+      {
+        num: 11, title: 'Race pace simulation', intensity: 'peak', intLabel: 'Peak',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. All-out effort. Log your tread paces — these are your race day benchmarks.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Paced roxzone', detail: 'Gym: 5×(1km run + station) at true race pace. No holding back. Rest 90s max between rounds.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Hold orange zone for entire workout. Strong.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×6 back squat (heavy), 3×25 wall ball, 3×20 sandbag lunge, 3×40m farmer carry. Race-pace energy.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Light yoga or walk. This is an important rest before your big Sunday run.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '7.5 miles. Add 3 miles at tempo pace in the middle. Practice finishing strong.', type: 'run' }
+        ]
+      },
+      {
+        num: 12, title: 'Final hard week', intensity: 'peak', intLabel: 'Peak',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest. Last big week coming up.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Last really hard OTF. Leave it all here. This is your final peak class.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: '6km + stations', detail: 'Gym: 6km continuous run at race pace, then immediately: wall balls 30 + farmers carry 40m + ski erg 500m. One shot.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Push hard. After this week you taper — give everything.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×8 back squat (moderate), 3×15 wall ball, 3×12 sandbag lunge. Begin reducing volume — prep body for taper.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Stretch', detail: 'Full stretch session. Begin prioritizing sleep this week. 8 hrs minimum.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '8 miles. Your peak long run. Moderate effort. Celebrate when you finish — this is your farthest training run.', type: 'run' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'taper', label: 'Taper', color: '#2478c8',
+    weeksLabel: 'Weeks 13–14 · Aug 24 – Sep 6',
+    desc: 'Cut volume in half. Keep intensity sharp. Sleep, eat well, hydrate, and visualize race day.',
+    weeks: [
+      {
+        num: 13, title: 'Volume drops 50%', intensity: 'taper', intLabel: 'Taper',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Express/30 min class if available. Easy effort. Just maintain the engine.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Short sharpener', detail: 'Gym: 3×(1km run + 1 station). Race pace intensity but only 3 rounds. Keep it sharp, not exhausting.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Light class. Orange zone only. No red zone chasing.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Light strength (home)', detail: '2×10 back squat (light), 2×10 wall ball, 2×10 sandbag lunge. Just moving, not training.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Rest', detail: 'Full rest. Eat well. Sleep early.', rest: true, type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5 miles easy. Legs should start feeling springy and fresh. Good sign.', type: 'run' }
+        ]
+      },
+      {
+        num: 14, title: 'Race week', intensity: 'raceweek', intLabel: 'Race week',
+        days: [
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest. Prep gear bag: shoes, kit, nutrition, bib holder.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Very easy class. Green zone only. Just stay loose and confident.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Leg flush run', detail: 'Gym: 15 min easy jog + 5 min each on ski erg and row, very easy. Legs should feel fresh.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Travel to D.C.', detail: 'Travel day. Walk around when you arrive. Light 10 min stretch at hotel. Early dinner. Hydrate all day.', type: 'rest' },
+          { dayKey: 'fri', label: 'Fri', name: 'Packet pickup', detail: 'Check in at venue. Walk the floor, see the stations. 10 min easy jog if feeling restless. Eat a big carb dinner. Bed by 9pm.', type: 'rest' },
+          { dayKey: 'sat', label: 'Sat', name: '🏁 Race Day', detail: 'HYROX Washington D.C. — Walter E. Washington Convention Center. 14 weeks of work. Go get it.', type: 'run' },
+          { dayKey: 'sun', label: 'Sun', name: 'Recovery + celebrate', detail: 'Easy walk. Stretch. Eat everything. You finished HYROX.', type: 'rest' }
+        ]
+      }
+    ]
+  }
+];
+
+const stations = [
+  { num: 1, name: 'SkiErg', dist: '1,000m' },
+  { num: 2, name: 'Sled push', dist: '50m' },
+  { num: 3, name: 'Sled pull', dist: '50m' },
+  { num: 4, name: 'Burpee broad jumps', dist: '80m' },
+  { num: 5, name: 'Rowing', dist: '1,000m' },
+  { num: 6, name: 'Farmers carry', dist: '200m' },
+  { num: 7, name: 'Sandbag lunges', dist: '100m' },
+  { num: 8, name: 'Wall balls', dist: '75–100 reps' }
+];
+
+const tips = [
+  { head: 'Register now', body: 'HYROX D.C. sells out. Lock in your spot at hyrox.com before starting week 1.' },
+  { head: 'OTF is your roxzone engine', body: 'Treat Power Day push/all-out tread blocks as station transitions. Practice holding pace when fatigued.' },
+  { head: 'Wall balls + burpee jumps', body: 'These lose the most time. Build them into every Friday session — 25+ reps unbroken is your goal.' },
+  { head: 'Know your 1km race pace', body: 'HYROX has 8km of running total. Find a pace you can hold for all 8 and stick to it. Going out too hot costs big.' },
+  { head: 'Protein target', body: 'Aim for 0.7–1g per lb of bodyweight daily to support fat loss and muscle recovery during heavy training.' },
+  { head: 'Sleep is training', body: '7–8 hrs directly impacts fat burning, stress hormones, and recovery. Non-negotiable especially in peak weeks.' }
+];
+
+// Determine current week
+function getCurrentWeek() {
+  const now = new Date(); now.setHours(0,0,0,0);
+  const start = new Date(TRAINING_START); start.setHours(0,0,0,0);
+  const diff = now - start;
+  const weekNum = Math.floor(diff / (7 * 24 * 60 * 60 * 1000)) + 1;
+  return weekNum >= 1 && weekNum <= 14 ? weekNum : null;
+}
+
+const currentWeek = getCurrentWeek();
+const main = document.getElementById('main-content');
+let html = '';
+
+const TYPE_PILL = {
+  otf: '<span class="day-type-pill pill-otf">OTF</span>',
+  gym: '<span class="day-type-pill pill-gym">Gym</span>',
+  home: '<span class="day-type-pill pill-home">Home</span>',
+  run: '<span class="day-type-pill pill-run">Long run</span>',
+  rest: '<span class="day-type-pill pill-rest">Rest</span>'
+};
+
+phases.forEach(phase => {
+  html += `<section class="phase-section" data-phase="${phase.id}">`;
+  html += `<div class="phase-header-row">
+    <span class="phase-label" style="color:${phase.color}">${phase.label}</span>
+    <span class="phase-weeks-label">${phase.weeksLabel}</span>
+  </div><p class="phase-desc-text">${phase.desc}</p>`;
+
+  phase.weeks.forEach(week => {
+    const isCurrent = week.num === currentWeek;
+    const wStart = weekStartDate(week.num);
+    const wEnd = addDays(wStart, 6);
+    const dateRange = `${MONTHS[wStart.getMonth()]} ${wStart.getDate()} – ${MONTHS[wEnd.getMonth()]} ${wEnd.getDate()}`;
+
+    // Compute completion for header
+    const workoutDays = week.days.filter(d => !d.rest);
+    const doneDays = workoutDays.filter((d, i) => {
+      const realIdx = week.days.indexOf(d);
+      return completed[`w${week.num}-d${realIdx}`];
+    }).length;
+    const pct = workoutDays.length > 0 ? Math.round((doneDays / workoutDays.length) * 100) : 0;
+    const allDone = pct === 100 && workoutDays.length > 0;
+
+    html += `<div class="week-card${isCurrent ? ' open' : ''}${allDone ? ' all-done' : ''}" id="week-${week.num}">
+      <button class="week-toggle" onclick="toggleWeek(this)">
+        <span class="week-num-badge">Week ${week.num}</span>
+        <span class="week-dates-badge">${dateRange}</span>
+        <span class="week-title">${week.title}${isCurrent ? '<span class="current-badge">Current</span>' : ''}${allDone ? '<span class="all-done-badge">Week done ✓</span>' : ''}</span>
+        <span class="week-intensity intensity-${week.intensity}">${week.intLabel}</span>
+        <span class="week-chevron">▾</span>
+      </button>
+      <div class="week-body"><div class="days-grid">`;
+
+    week.days.forEach((day, dayIdx) => {
+      const key = `w${week.num}-d${dayIdx}`;
+      const isDone = completed[key];
+      const dayDate = addDays(wStart, DAY_OFFSETS[day.dayKey]);
+      const todayFlag = isToday(dayDate);
+      const dateStr = fmtDate(dayDate);
+      const actualDayLabel = DAYS_FULL[dayDate.getDay()].toUpperCase();
+      const skipBtn = day.rest;
+
+      html += `<div class="day-cell${day.rest ? ' rest-cell' : ''}${isDone ? ' completed' : ''}${todayFlag ? ' today-cell' : ''}" id="cell-${key}">
+        <div class="day-cell-date${todayFlag ? ' today-date' : ''}">${dateStr}${todayFlag ? ' · Today' : ''}</div>
+        <div class="day-cell-label">${actualDayLabel}</div>
+        ${TYPE_PILL[day.type] || ''}
+        <div class="day-cell-name">${day.name}</div>
+        <div class="day-cell-detail">${day.detail}</div>
+        ${!skipBtn ? `<button class="done-btn" onclick="toggleDone('${key}', ${week.num})">
+          <span>${isDone ? '✓' : '○'}</span> ${isDone ? 'Done' : 'Mark done'}
+        </button>` : ''}
+      </div>`;
+    });
+
+    html += `</div>
+      <div class="week-progress">
+        <span id="prog-label-${week.num}">${doneDays}/${workoutDays.length} workouts</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-${week.num}" style="width:${pct}%"></div></div>
+        <span class="progress-label" id="prog-pct-${week.num}">${pct}%</span>
+      </div>
+    </div></div>`;
+  });
+
+  html += `</section>`;
+});
+
+// Stations
+html += `<div class="stations-section">
+  <div class="stations-title">The 8 HYROX stations · 1km run between each</div>
+  <div class="stations-grid">`;
+stations.forEach(s => {
+  html += `<div class="station-item"><span class="station-num">${s.num}</span><div><div class="station-name">${s.name}</div><div class="station-dist">${s.dist}</div></div></div>`;
+});
+html += `</div></div>`;
+
+// Race card
+html += `<div class="race-card">
+  <div class="race-eyebrow">Target event</div>
+  <div class="race-title">HYROX Washington D.C.</div>
+  <div class="race-details">September 3–7, 2026 &nbsp;·&nbsp; Walter E. Washington Convention Center</div>
+  <a href="https://hyrox.com" target="_blank" class="race-cta">Register at hyrox.com ↗</a>
+</div>`;
+
+// Tips
+html += `<div class="tips-section"><div class="tips-title">Key reminders</div><div class="tips-grid">`;
+tips.forEach(t => {
+  html += `<div class="tip-item"><div class="tip-head">${t.head}</div><div class="tip-body">${t.body}</div></div>`;
+});
+html += `</div></div>`;
+
+main.innerHTML = html;
+
+// Scroll to current week
+if (currentWeek) {
+  setTimeout(() => {
+    const el = document.getElementById('week-' + currentWeek);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
+}
+
+function toggleWeek(btn) { btn.closest('.week-card').classList.toggle('open'); }
+
+function filterPhase(phase) {
+  document.querySelectorAll('.phase-section').forEach(s => {
+    s.style.display = (phase === 'all' || s.dataset.phase === phase) ? 'block' : 'none';
+  });
+  const first = document.querySelector(`.phase-section[data-phase="${phase}"]`);
+  if (first && phase !== 'all') first.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function scrollToType(type) {
+  // Open all phases, then scroll to first cell of that type
+  document.querySelectorAll('.phase-section').forEach(s => s.style.display = 'block');
+  const pill = document.querySelector(`.pill-${type}`);
+  if (pill) {
+    const card = pill.closest('.week-card');
+    if (card) { card.classList.add('open'); card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+}
+
+function toggleDone(key, weekNum) {
+  completed[key] = !completed[key];
+  saveCompleted();
+  const cell = document.getElementById('cell-' + key);
+  const btn = cell.querySelector('.done-btn');
+  const isDone = completed[key];
+  cell.classList.toggle('completed', isDone);
+  btn.innerHTML = `<span>${isDone ? '✓' : '○'}</span> ${isDone ? 'Done' : 'Mark done'}`;
+  updateWeekProgress(weekNum);
+  updateOverallProgress();
+}
+
+function updateWeekProgress(weekNum) {
+  const phase = phases.find(p => p.weeks.find(w => w.num === weekNum));
+  if (!phase) return;
+  const week = phase.weeks.find(w => w.num === weekNum);
+  const workoutDays = week.days.filter(d => !d.rest);
+  const doneDays = workoutDays.filter((d) => {
+    const i = week.days.indexOf(d);
+    return completed[`w${weekNum}-d${i}`];
+  }).length;
+  const pct = workoutDays.length > 0 ? Math.round((doneDays / workoutDays.length) * 100) : 0;
+  const bar = document.getElementById('prog-' + weekNum);
+  if (bar) {
+    bar.style.width = pct + '%';
+    document.getElementById('prog-pct-' + weekNum).textContent = pct + '%';
+    document.getElementById('prog-label-' + weekNum).textContent = `${doneDays}/${workoutDays.length} workouts`;
+  }
+  const card = document.getElementById('week-' + weekNum);
+  if (!card) return;
+  const existing = card.querySelector('.all-done-badge');
+  if (pct === 100 && !existing) {
+    card.classList.add('all-done');
+    card.querySelector('.week-title').insertAdjacentHTML('beforeend', '<span class="all-done-badge">Week done ✓</span>');
+  } else if (pct < 100 && existing) {
+    card.classList.remove('all-done');
+    existing.remove();
+  }
+}
+
+function updateOverallProgress() {
+  let total = 0, done = 0;
+  phases.forEach(phase => {
+    phase.weeks.forEach(week => {
+      week.days.forEach((day, i) => {
+        if (!day.rest) { total++; if (completed[`w${week.num}-d${i}`]) done++; }
+      });
+    });
+  });
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('overall-fill').style.width = pct + '%';
+  document.getElementById('overall-pct').textContent = pct + '%';
+}
+
+updateOverallProgress();
+</script>
+</body>
+</html>
