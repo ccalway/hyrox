@@ -197,8 +197,8 @@
 <main class="main" id="main-content"></main>
 
 <script>
-const RACE_DATE = new Date('2026-09-05T08:00:00');
-const TRAINING_START = new Date('2026-06-01'); // Monday June 1
+const RACE_DATE = new Date(2026, 8, 5, 8, 0, 0); // Sep 5 local time
+const TRAINING_START = new Date(2026, 5, 1); // Monday June 1 (local time, month is 0-indexed)
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const DAYS_FULL = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -660,4 +660,5 @@ function updateOverallProgress() {
 updateOverallProgress();
 </script>
 </body>
+</html>
 </html>
