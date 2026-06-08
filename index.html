@@ -33,7 +33,9 @@
 
   .hero { padding: 5rem 2rem 3rem; max-width: 900px; margin: 0 auto; }
   .hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
-  .hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; }
+  .hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(5rem, 18vw, 10rem); line-height: 0.85; letter-spacing: -0.02em; text-transform: uppercase; color: var(--white); margin-bottom: 0.4rem; }
+  .hero-title span { color: var(--orange); }
+  .hero-race-line { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 2rem; }
   .hero-title span { color: var(--orange); }
   .hero-sub { font-size: 1rem; color: var(--gray); max-width: 460px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.7; }
   .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
@@ -137,7 +139,7 @@
   .tip-body { font-size: 0.78rem; color: #888; line-height: 1.5; }
 
   @media (max-width: 600px) {
-    .hero-title { font-size: 3rem; }
+    .hero-title { font-size: 4rem; }
     .hero-stats { gap: 1.5rem; }
     .days-grid { grid-template-columns: 1fr 1fr; }
     header { padding: 0 1rem; }
@@ -153,9 +155,9 @@
 </header>
 
 <div class="hero">
-  <div class="hero-eyebrow">Your 14-Week Plan · Starting June 1, 2026</div>
-  <h1 class="hero-title">Train.<br><span>Race.</span><br>Finish.</h1>
-  <p class="hero-sub">Washington D.C. · September 3–7, 2026 · Walter E. Washington Convention Center</p>
+  <div class="hero-eyebrow">HYROX DC · September 2026</div>
+  <h1 class="hero-title">HYROX DC</h1><p class="hero-race-line">September 5, 2026</p>
+  <p class="hero-sub">Walter E. Washington Convention Center · D.C.</p>
   <div class="hero-stats">
     <div class="stat"><span class="stat-num">14</span><span class="stat-label">Weeks</span></div>
     <div class="stat"><span class="stat-num">6</span><span class="stat-label">Days/week</span></div>
@@ -195,7 +197,7 @@
 <main class="main" id="main-content"></main>
 
 <script>
-const RACE_DATE = new Date('2026-09-03T08:00:00');
+const RACE_DATE = new Date('2026-09-05T08:00:00');
 const TRAINING_START = new Date('2026-06-01'); // Monday June 1
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -251,37 +253,37 @@ const phases = [
       {
         num: 1, title: 'Orientation', intensity: 'easy', intLabel: 'Easy',
         days: [
-          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest. Set up your training log. Plan the week ahead.', rest: true, type: 'rest' },
-          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Endurance class. Stay green/orange zones. Log your splat points as a baseline.', type: 'otf' },
-          { dayKey: 'wed', label: 'Wed', name: 'Station intro', detail: 'Gym: 3×5 min ski erg + 3×5 min row. Easy pace, focus on form. Practice burpee broad jumps 3×10.', type: 'gym' },
-          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Power Day. Get a feel for push/all-out intensity. Note tread paces.', type: 'otf' },
-          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×10 back squat (bar), 3×12 RDL, 3×15 wall ball, 3×12 goblet squat (sandbag). Rest 90s between sets.', type: 'home' },
-          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: '20–30 min easy walk or yoga. Hip flexors, hamstrings, shoulders.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '4 miles easy. Conversational pace. This is your aerobic base builder.', type: 'run' }
+          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
+          { dayKey: 'tue', label: 'Tue', name: '✅ Orangetheory', detail: 'Done — Endurance class Jun 2.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Rest', detail: 'Rest day.', rest: true, type: 'rest' },
+          { dayKey: 'thu', label: 'Thu', name: '✅ Run', detail: 'Done — 3.5 miles Jun 4.', type: 'run' },
+          { dayKey: 'fri', label: 'Fri', name: '✅ HYROX Sim', detail: 'Done — 4×1km runs, 50 wall balls, 1km row Jun 5. Note: burpees need work.', type: 'gym' },
+          { dayKey: 'sat', label: 'Sat', name: 'Rest', detail: 'Rest day.', rest: true, type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: '✅ Long run', detail: 'Done — 5 miles hilly Jun 7. Ahead of plan.', type: 'run' }
         ]
       },
       {
         num: 2, title: 'Aerobic base', intensity: 'easy', intLabel: 'Easy',
         days: [
           { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
-          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Endurance Day if available. Aim 14–18 splat points. Stay controlled.', type: 'otf' },
-          { dayKey: 'wed', label: 'Wed', name: 'Run + row', detail: 'Gym: 2km run, 500m row, 2km run, 500m row. Rest 2 min between efforts. Easy-moderate pace.', type: 'gym' },
-          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Power Day. Push the tread intervals. Note your base/push/all-out paces — you\'ll use these race day.', type: 'otf' },
-          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×12 back squat, 3×10 RDL with 35lb DBs, 3×15 wall ball, 3×10 single-leg RDL. Add farmer carry 3×30m with DBs.', type: 'home' },
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day — push tread intervals, log your base/push/all-out paces. These are your race benchmarks.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Run + burpees + row', detail: 'Gym: 4×1km runs (90s rest), then burpee broad jumps 3×10 (technique focus — chest to floor, jump forward, not up), then 500m row.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day — sustain orange zone for long blocks.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×12 back squat, 3×10 RDL (35lb DBs), 3×20 wall ball, 3×12 sandbag lunge, farmer carry 3×30m.', type: 'home' },
           { dayKey: 'sat', label: 'Sat', name: 'Mobility', detail: '30 min yoga or foam roll. Focus: hip flexors, IT band, thoracic spine.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '4.5 miles easy. Same conversational pace. Don\'t push it.', type: 'run' }
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5.5 miles easy-moderate. You ran 5 hilly in week 1 — keep building.', type: 'run' }
         ]
       },
       {
         num: 3, title: 'Volume up', intensity: 'moderate', intLabel: 'Moderate',
         days: [
           { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
-          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Push hard on intervals. Target 18–20 splat points.', type: 'otf' },
-          { dayKey: 'wed', label: 'Wed', name: 'Station circuit', detail: 'Gym: 1km run → ski erg 500m → 1km run → row 500m → 1km run → wall balls 20 reps. ×2 rounds. Rest 3 min between.', type: 'gym' },
-          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Sustain orange zone for long blocks. Practice holding pace.', type: 'otf' },
-          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×8 back squat (add weight), 3×10 RDL, 3×20 wall ball, 3×12 sandbag lunge. Superset: 3×10 push-up + 3×10 bent row with 35lb DBs.', type: 'home' },
-          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Easy 20 min walk or light yoga. Legs should feel fresh for Sunday.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5 miles moderate. Pick up slightly in the last mile if feeling good.', type: 'run' }
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day — target 18–20 splat points.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Station circuit + burpees', detail: 'Gym: 1km run → ski erg 500m → 1km run → row 500m → burpee broad jumps 3×15 → 1km run → wall balls 25. ×2 rounds. Rest 3 min between.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day — long orange zone blocks. Practice holding pace when tired.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×8 back squat (add weight), 3×10 RDL, 3×25 wall ball, 3×12 sandbag lunge. Superset: 3×10 push-up + 3×10 bent row (35lb DBs).', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Easy 20 min walk or light yoga. Legs fresh for Sunday.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '6 miles moderate — pick up the last mile if feeling good.', type: 'run' }
         ]
       },
       {
@@ -304,27 +306,27 @@ const phases = [
     desc: 'Increase intensity and volume. Introduce roxzones — back-to-back station + run sequences. This is where real race fitness is built.',
     weeks: [
       {
-        num: 5, title: 'Introduce roxzones', intensity: 'moderate', intLabel: 'Moderate',
+        num: 5, title: 'OTF HYROX + build begins', intensity: 'moderate', intLabel: 'Moderate',
         days: [
-          { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
-          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Push hard — 18–20 splat points target.', type: 'otf' },
-          { dayKey: 'wed', label: 'Wed', name: 'Roxzone intro', detail: 'Gym: 1km run → ski erg 500m → 1km run → row 500m → 1km run → wall balls 25 reps. Rest 3 min, repeat ×1.', type: 'gym' },
-          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Build time in orange zone. Aim for sustained effort over 45 min.', type: 'otf' },
-          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×8 back squat, 4×12 RDL (35lb DBs), 4×15 wall ball, 3×20 sandbag lunge, 3×30m farmer carry.', type: 'home' },
-          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Yoga or 30 min walk. HR below 120. Prep legs for Sunday.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5 miles moderate. Start building a negative split habit — second half slightly faster.', type: 'run' }
+          { dayKey: 'mon', label: 'Mon', name: '🟠 OTF 90-min HYROX', detail: 'Special 90-min HYROX-specific OTF class. Treat as your big effort for the week. Push hard.', type: 'otf' },
+          { dayKey: 'tue', label: 'Tue', name: 'Rest', detail: 'Full rest — you earned it after Monday.', rest: true, type: 'rest' },
+          { dayKey: 'wed', label: 'Wed', name: 'Roxzone (1 round)', detail: 'Gym: 1 round only — 1km run → ski erg 500m → 1km run → row 500m → burpee jumps 20 → wall balls 25. Dialed back since Monday was big.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day — legs recovered, push orange zone.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×8 back squat, 4×12 RDL (35lb DBs), 4×20 wall ball, 3×20 sandbag lunge, 3×30m farmer carry.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Yoga or walk. HR below 120.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5.5 miles easy-moderate. Sustained aerobic effort — Monday was intervals, this is different.', type: 'run' }
         ]
       },
       {
         num: 6, title: 'Volume + pace', intensity: 'moderate', intLabel: 'Moderate+',
         days: [
           { dayKey: 'mon', label: 'Mon', name: 'Rest', detail: 'Full rest.', rest: true, type: 'rest' },
-          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day. Note tread paces — are you holding them from week 1? Aim to improve.', type: 'otf' },
-          { dayKey: 'wed', label: 'Wed', name: 'Intervals + stations', detail: 'Gym: 4×1km at 5k effort (90s rest), then: 80m burpee broad jumps + 1km run + farmers carry 2×40m. ×2.', type: 'gym' },
-          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Marathon format if available — longest sustained effort.', type: 'otf' },
-          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '5×5 back squat (heavy), 3×10 RDL, 3×25 wall ball, 4×12 sandbag lunge, 3×30m farmer carry. Focus: heavy lower body.', type: 'home' },
-          { dayKey: 'sat', label: 'Sat', name: 'Mobility', detail: '30 min: hip flexor stretch, pigeon pose, shoulder mobility, foam roll quads + calves.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '5.5 miles. Add a 10 min tempo segment in the middle (comfortably hard effort).', type: 'run' }
+          { dayKey: 'tue', label: 'Tue', name: 'Orangetheory', detail: 'Power Day — are tread paces improving from week 2? Push to find out.', type: 'otf' },
+          { dayKey: 'wed', label: 'Wed', name: 'Intervals + burpees', detail: 'Gym: 4×1km at 5k effort (90s rest), then burpee broad jumps 4×20 + 1km run + farmer carry 2×40m. ×2 rounds.', type: 'gym' },
+          { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day — marathon format if available. Longest sustained effort.', type: 'otf' },
+          { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '5×5 back squat (heavy), 3×10 RDL, 3×25 wall ball, 4×12 sandbag lunge, 3×30m farmer carry.', type: 'home' },
+          { dayKey: 'sat', label: 'Sat', name: 'Mobility', detail: '30 min: hip flexor, pigeon pose, shoulder mobility, foam roll quads + calves.', type: 'rest' },
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '6 miles + 10 min tempo segment in the middle (comfortably hard effort).', type: 'run' }
         ]
       },
       {
@@ -360,7 +362,7 @@ const phases = [
           { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Sustain orange zone. Think about running economy.', type: 'otf' },
           { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '4×6 back squat, 4×20 wall ball, 4×15 sandbag lunge, 3×400m run at tempo. Keep rest tight.', type: 'home' },
           { dayKey: 'sat', label: 'Sat', name: 'Active recovery', detail: 'Easy 30 min walk. Legs may be tired — that\'s fine. Just keep moving.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '6.5 miles moderate. Add 2×1 mile at tempo in the middle.', type: 'run' }
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '7 miles moderate. Add 2×1 mile at tempo in the middle.', type: 'run' }
         ]
       },
       {
@@ -403,7 +405,7 @@ const phases = [
           { dayKey: 'thu', label: 'Thu', name: 'Orangetheory', detail: 'Endurance Day. Push hard. After this week you taper — give everything.', type: 'otf' },
           { dayKey: 'fri', label: 'Fri', name: 'Strength (home)', detail: '3×8 back squat (moderate), 3×15 wall ball, 3×12 sandbag lunge. Begin reducing volume — prep body for taper.', type: 'home' },
           { dayKey: 'sat', label: 'Sat', name: 'Stretch', detail: 'Full stretch session. Begin prioritizing sleep this week. 8 hrs minimum.', type: 'rest' },
-          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '8 miles. Your peak long run. Moderate effort. Celebrate when you finish — this is your farthest training run.', type: 'run' }
+          { dayKey: 'sun', label: 'Sun', name: 'Long run', detail: '8.5 miles. Your peak long run. Moderate effort. Celebrate when you finish — this is your farthest training run.', type: 'run' }
         ]
       }
     ]
@@ -433,7 +435,7 @@ const phases = [
           { dayKey: 'wed', label: 'Wed', name: 'Leg flush run', detail: 'Gym: 15 min easy jog + 5 min each on ski erg and row, very easy. Legs should feel fresh.', type: 'gym' },
           { dayKey: 'thu', label: 'Thu', name: 'Travel to D.C.', detail: 'Travel day. Walk around when you arrive. Light 10 min stretch at hotel. Early dinner. Hydrate all day.', type: 'rest' },
           { dayKey: 'fri', label: 'Fri', name: 'Packet pickup', detail: 'Check in at venue. Walk the floor, see the stations. 10 min easy jog if feeling restless. Eat a big carb dinner. Bed by 9pm.', type: 'rest' },
-          { dayKey: 'sat', label: 'Sat', name: '🏁 Race Day', detail: 'HYROX Washington D.C. — Walter E. Washington Convention Center. 14 weeks of work. Go get it.', type: 'run' },
+          { dayKey: 'sat', label: 'Sat', name: '🏁 Race Day', detail: 'HYROX Washington D.C. — Walter E. Washington Convention Center. Sep 5, 2026. 14 weeks of work. Go get it.', type: 'run' },
           { dayKey: 'sun', label: 'Sun', name: 'Recovery + celebrate', detail: 'Easy walk. Stretch. Eat everything. You finished HYROX.', type: 'rest' }
         ]
       }
@@ -453,9 +455,9 @@ const stations = [
 ];
 
 const tips = [
-  { head: 'Register now', body: 'HYROX D.C. sells out. Lock in your spot at hyrox.com before starting week 1.' },
+  { head: 'You\'re registered!', body: 'HYROX DC Sep 5, 2026. Don\'t forget to complete your $400 charity fundraising — a personal ask to 20 friends at $20 each gets you there.' },
   { head: 'OTF is your roxzone engine', body: 'Treat Power Day push/all-out tread blocks as station transitions. Practice holding pace when fatigued.' },
-  { head: 'Wall balls + burpee jumps', body: 'These lose the most time. Build them into every Friday session — 25+ reps unbroken is your goal.' },
+  { head: 'Burpee broad jumps are your priority', body: 'You flagged these in week 1. Every Wednesday has dedicated burpee work. Focus on chest-to-floor form and jumping forward not up. Build to 80m unbroken.' },
   { head: 'Know your 1km race pace', body: 'HYROX has 8km of running total. Find a pace you can hold for all 8 and stick to it. Going out too hot costs big.' },
   { head: 'Protein target', body: 'Aim for 0.7–1g per lb of bodyweight daily to support fat loss and muscle recovery during heavy training.' },
   { head: 'Sleep is training', body: '7–8 hrs directly impacts fat burning, stress hormones, and recovery. Non-negotiable especially in peak weeks.' }
@@ -560,7 +562,7 @@ html += `</div></div>`;
 html += `<div class="race-card">
   <div class="race-eyebrow">Target event</div>
   <div class="race-title">HYROX Washington D.C.</div>
-  <div class="race-details">September 3–7, 2026 &nbsp;·&nbsp; Walter E. Washington Convention Center</div>
+  <div class="race-details">September 5, 2026 &nbsp;·&nbsp; Walter E. Washington Convention Center</div>
   <a href="https://hyrox.com" target="_blank" class="race-cta">Register at hyrox.com ↗</a>
 </div>`;
 
